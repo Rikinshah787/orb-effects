@@ -6,8 +6,9 @@
   "private": false,
   "scripts": {
     "start": "python -m http.server 5173",
+    "bridge": "node bridge/orb-bridge.js",
     "demo:events": "node examples/sse-server.js",
-    "check": "node --check agent-aura.js && node --check main.js && node --check monitor.js && node --check examples/sse-server.js"
+    "check": "node --check agent-aura.js && node --check main.js && node --check monitor.js && node --check examples/sse-server.js && node --check bridge/orb-bridge.js"
   },
   "keywords": [
     "ai",
@@ -16,6 +17,9 @@
     "canvas",
     "animation",
     "observability",
+    "claude-code",
+    "cursor",
+    "codex",
     "sse"
   ],
   "author": "Rikin Shah",

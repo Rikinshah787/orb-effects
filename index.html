@@ -19,11 +19,15 @@
         </div>
 
         <div class="intro">
-          <p class="eyebrow">Agent monitor</p>
+          <p class="eyebrow">Live agent monitor</p>
           <h1 id="title">Orb Effects</h1>
           <p class="lede">
-            Your agent, at a glance.
+            See what your coding agent is doing in real time.
           </p>
+          <div class="cta-row" aria-label="Primary actions">
+            <a class="primary-cta" href="#connect-live">Connect live agent</a>
+            <a class="secondary-cta" href="#bridge">Run the bridge</a>
+          </div>
 
           <div class="actions" role="group" aria-label="Agent states">
             <button class="state-button is-active" data-state="thinking">Thinking</button>
@@ -57,14 +61,24 @@
             </div>
           </div>
 
-          <button class="copy-button" id="copySnippet" type="button">Copy Orb snippet</button>
+          <button class="copy-button" id="copySnippet" type="button">Copy embed snippet</button>
         </div>
       </section>
 
-      <section class="monitor" aria-label="Event connection">
+      <section class="bridge-callout" id="bridge" aria-labelledby="bridge-title">
+        <div>
+          <p class="eyebrow">Best way to use it</p>
+          <h2 id="bridge-title">Run your agent through Orb Bridge</h2>
+        </div>
+        <pre><code>npm run bridge -- claude
+npm run bridge -- codex
+npm run bridge -- npm test</code></pre>
+      </section>
+
+      <section class="monitor" id="connect-live" aria-label="Event connection">
         <form id="connectForm">
           <label for="endpoint">Event stream URL</label>
-          <input id="endpoint" type="url" placeholder="http://localhost:3000/events" required />
+          <input id="endpoint" type="url" value="http://localhost:3000/events" required />
           <button id="connect" class="state-button">Connect</button>
         </form>
         <p id="connectionStatus" role="status">Preview mode. No agent connected.</p>
@@ -112,7 +126,7 @@
       <section class="embed" aria-labelledby="embed-title">
         <div>
           <p class="eyebrow">Drop-in usage</p>
-          <h2 id="embed-title">Useful by default</h2>
+          <h2 id="embed-title">Embed the orb anywhere</h2>
         </div>
         <pre><code id="snippet">&lt;canvas id="orb"&gt;&lt;/canvas&gt;
 &lt;script type="module"&gt;

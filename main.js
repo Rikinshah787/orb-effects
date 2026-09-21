@@ -149,7 +149,7 @@ copySnippet.addEventListener("click", async () => {
   copySnippet.textContent = "Copied";
   copySnippet.classList.add("is-copied");
   window.setTimeout(() => {
-    copySnippet.textContent = "Copy Orb snippet";
+    copySnippet.textContent = "Copy embed snippet";
     copySnippet.classList.remove("is-copied");
   }, 1300);
 });
