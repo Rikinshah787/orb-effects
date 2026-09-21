@@ -1,72 +1,58 @@
 # Orb Effects
 
-Tiny animated status orbs for AI coding agents.
+![Orb Effects preview](./assets/hero.svg)
 
-Most coding agents still feel like a black box while they read files, search,
-call tools, wait for approval, run tests, or get stuck. Orb Effects turns that
-invisible work into a small visual heartbeat that people can understand at a
-glance.
+**A live activity orb for AI coding agents.**
 
-## The CTA
+Orb Effects shows what your agent is doing right now: reading, searching,
+calling tools, streaming, waiting, blocked, or done.
 
-Run your agent through Orb Bridge. Connect the page to
-`http://localhost:3000/events`. Watch the orb change live.
+No mystery spinner. No heavy dashboard. Just a tiny real-time agent heartbeat.
 
-## Why
+## Quick Start
 
-Use Orb Effects when your product needs a status surface that is lighter than a
-dashboard and more honest than a loading spinner.
-
-- Show what an agent is doing right now.
-- Make blocked or waiting states obvious.
-- Stream live events over Server-Sent Events.
-- Bridge CLI tools like Claude Code, Codex, Cursor wrappers, and test commands.
-- Import and export event logs for demos, support, and debugging.
-- Drop it into a page with no framework and no dependencies.
-
-## Demo
-
-```bash
-python -m http.server 5173
-```
-
-Open `http://127.0.0.1:5173`.
-
-## Connect a Coding Agent
-
-Start the Orb UI:
+Run the UI:
 
 ```bash
 npm run start
 ```
 
-Start the bridge in another terminal:
+Run the live bridge in another terminal:
 
 ```bash
 npm run bridge
 ```
 
-If port `3000` is busy on Windows PowerShell:
+Open `http://127.0.0.1:5173` and click **Connect live agent**.
+
+That is it.
+
+## Watch Any Command
+
+Wrap a coding agent or CLI command:
 
 ```bash
-$env:ORB_PORT=3001; npm run bridge
-```
-
-Then connect the page to:
-
-```text
-http://localhost:3000/events
-```
-
-Wrap a command to stream live lifecycle events:
-
-```bash
-node bridge/orb-bridge.js npm test
 node bridge/orb-bridge.js claude
 node bridge/orb-bridge.js codex
+node bridge/orb-bridge.js npm test
 ```
 
-Any editor extension, hook, or custom agent can also POST events:
+Orb updates as the command starts, prints output, fails, or finishes.
+
+## Why People Use It
+
+- See if an agent is working or stuck.
+- Show `waiting` and `blocked` states clearly.
+- Make demos feel alive.
+- Give users trust without exposing raw logs.
+- Works with plain HTML, canvas, Node, and Server-Sent Events.
+
+## Works With
+
+Claude Code, Codex, Cursor wrappers, custom agents, test runners, browser
+automation scripts, and any tool that can send JSON.
+
+## Send Your Own Event
 
 ```bash
 curl -X POST http://localhost:3000/event \
@@ -74,80 +60,55 @@ curl -X POST http://localhost:3000/event \
   -d "{\"state\":\"reading\",\"label\":\"Reading files\",\"detail\":\"Scanning src/\"}"
 ```
 
-See [BRIDGE.md](./BRIDGE.md) for details.
+Supported states:
 
-## Install
+`thinking`, `reading`, `searching`, `tool_calling`, `streaming`, `waiting`,
+`blocked`, `done`
 
-Copy `orb.js` and `agent-aura.js` into your app, then add a canvas:
+## Embed Only The Orb
 
 ```html
 <canvas id="orb"></canvas>
 <script type="module">
   import { Orb } from "./orb.js";
 
-  const orb = new Orb("#orb", {
-    state: "tool_calling",
-    input: 0.42,
-    output: 0.18,
-    priority: 0.68
-  });
+  const orb = new Orb("#orb");
 
   orb.setEvent({
-    state: "waiting",
-    label: "Needs approval",
-    detail: "Draft is ready before anything is sent.",
-    priority: 0.91
+    state: "tool_calling",
+    label: "Running tests",
+    detail: "Checking the latest change.",
+    priority: 0.8
   });
 </script>
 ```
 
-## Agent States
+## If Port 3000 Is Busy
 
-- `thinking`: choosing the next step
-- `reading`: scanning context
-- `searching`: looking up fresh evidence
-- `tool_calling`: using an external tool
-- `streaming`: producing an answer
-- `waiting`: needs user input or approval
-- `blocked`: failed or needs attention
-- `done`: complete
+Windows PowerShell:
 
-## Event Shape
-
-```json
-{
-  "state": "tool_calling",
-  "label": "Running search",
-  "detail": "Checking fresh sources before answering.",
-  "input": 0.58,
-  "output": 0.34,
-  "priority": 0.62,
-  "timestamp": "2026-09-21T07:00:00.000Z"
-}
+```bash
+$env:ORB_PORT=3001; npm run bridge
 ```
 
-`input`, `output`, and `priority` are numbers from `0` to `1`.
-
-## Live Stream
-
-The monitor UI can connect to any HTTP or HTTPS Server-Sent Events endpoint that
-sends JSON events:
+Then connect Orb to:
 
 ```text
-data: {"state":"searching","label":"Searching","detail":"Looking up sources."}
-
+http://localhost:3001/events
 ```
 
-See [MONITOR.md](./MONITOR.md) for the full monitor contract.
+## Docs
+
+- [BRIDGE.md](./BRIDGE.md): connect agents and commands
+- [MONITOR.md](./MONITOR.md): event stream contract
 
 ## Project Files
 
 - `orb.js`: public export
 - `agent-aura.js`: canvas renderer
-- `monitor.js`: live event monitor, validation, import/export
-- `bridge/orb-bridge.js`: local bridge for CLI and agent events
+- `monitor.js`: live event monitor
+- `bridge/orb-bridge.js`: local bridge for agent events
 - `index.html`: demo app
-- `examples/sse-server.js`: local SSE demo server
 
 ## License
 

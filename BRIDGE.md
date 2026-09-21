@@ -3,10 +3,30 @@
 Orb Bridge is a tiny local event server for connecting coding agents and CLI
 workflows to Orb Effects in real time.
 
-## Start the Bridge
+## Easy Mode
+
+Terminal 1:
+
+```bash
+npm run start
+```
+
+Terminal 2:
 
 ```bash
 npm run bridge
+```
+
+Open `http://127.0.0.1:5173` and click **Connect live agent**.
+
+## Watch A Command
+
+Run a command through the bridge:
+
+```bash
+node bridge/orb-bridge.js npm test
+node bridge/orb-bridge.js claude
+node bridge/orb-bridge.js codex
 ```
 
 Connect Orb to:
@@ -19,14 +39,6 @@ If port `3000` is busy:
 
 ```bash
 $env:ORB_PORT=3001; npm run bridge
-```
-
-## Wrap Any Command
-
-```bash
-node bridge/orb-bridge.js npm test
-node bridge/orb-bridge.js claude
-node bridge/orb-bridge.js codex
 ```
 
 The bridge publishes:

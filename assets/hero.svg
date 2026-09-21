@@ -1,0 +1,54 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Orb Effects preview</title>
+  <desc id="desc">A glowing status orb connected to a live agent activity panel.</desc>
+  <rect width="1280" height="640" rx="36" fill="#08090D"/>
+  <circle cx="950" cy="120" r="360" fill="#58D5C9" fill-opacity=".12"/>
+  <circle cx="190" cy="530" r="300" fill="#FFCE6B" fill-opacity=".09"/>
+  <g transform="translate(110 86)">
+    <text x="0" y="36" fill="#58D5C9" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="3">LIVE AGENT MONITOR</text>
+    <text x="0" y="116" fill="#F6F7FB" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="72" font-weight="850">Orb Effects</text>
+    <text x="0" y="168" fill="#9EA7B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28">See what your coding agent is doing in real time.</text>
+    <g transform="translate(0 222)">
+      <rect width="198" height="56" rx="10" fill="#58D5C9"/>
+      <text x="26" y="36" fill="#071113" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800">Connect live</text>
+      <rect x="216" width="166" height="56" rx="10" fill="#11131A" stroke="#2B3040"/>
+      <text x="244" y="36" fill="#F6F7FB" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800">Run bridge</text>
+    </g>
+    <g transform="translate(0 332)" font-family="Inter, Segoe UI, Arial, sans-serif">
+      <rect width="470" height="98" rx="14" fill="#11131A" fill-opacity=".84" stroke="#2B3040"/>
+      <text x="24" y="38" fill="#F6F7FB" font-size="21" font-weight="800">npm run bridge -- claude</text>
+      <text x="24" y="70" fill="#9EA7B8" font-size="18">Streams thinking, tool calls, blocked, done</text>
+    </g>
+  </g>
+  <g transform="translate(690 90)">
+    <circle cx="190" cy="190" r="168" fill="url(#glow)"/>
+    <path d="M189 51C254 52 326 99 334 171C343 251 265 327 181 326C103 325 44 262 47 185C50 113 114 50 189 51Z" stroke="#58D5C9" stroke-opacity=".7" stroke-width="4"/>
+    <path d="M178 74C236 62 299 107 305 169C313 243 247 297 183 296C117 295 76 248 76 189C76 132 118 87 178 74Z" stroke="#F6F7FB" stroke-opacity=".22" stroke-width="2"/>
+    <circle cx="114" cy="146" r="5" fill="#FFCE6B"/>
+    <circle cx="280" cy="214" r="7" fill="#58D5C9"/>
+    <circle cx="210" cy="82" r="4" fill="#8FB4FF"/>
+    <circle cx="155" cy="292" r="6" fill="#75F28F"/>
+    <path d="M190 5A185 185 0 0 1 375 190" stroke="#58D5C9" stroke-width="7" stroke-linecap="round"/>
+    <path d="M190 24A166 166 0 0 1 332 276" stroke="#FFCE6B" stroke-width="7" stroke-linecap="round"/>
+    <path d="M190 43A147 147 0 0 1 284 302" stroke="#F6F7FB" stroke-opacity=".8" stroke-width="7" stroke-linecap="round"/>
+    <rect x="430" y="24" width="270" height="306" rx="16" fill="#11131A" fill-opacity=".9" stroke="#2B3040"/>
+    <text x="454" y="62" fill="#58D5C9" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="2">EVENT HISTORY</text>
+    <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16">
+      <rect x="454" y="88" width="222" height="44" rx="8" fill="#58D5C9" fill-opacity=".12" stroke="#58D5C9" stroke-opacity=".5"/>
+      <text x="470" y="116" fill="#F6F7FB">reading files</text>
+      <rect x="454" y="146" width="222" height="44" rx="8" fill="#08090D" stroke="#2B3040"/>
+      <text x="470" y="174" fill="#F6F7FB">calling tool</text>
+      <rect x="454" y="204" width="222" height="44" rx="8" fill="#08090D" stroke="#2B3040"/>
+      <text x="470" y="232" fill="#F6F7FB">streaming output</text>
+      <rect x="454" y="262" width="222" height="44" rx="8" fill="#08090D" stroke="#2B3040"/>
+      <text x="470" y="290" fill="#F6F7FB">done</text>
+    </g>
+  </g>
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(190 190) rotate(90) scale(190)">
+      <stop stop-color="#58D5C9" stop-opacity=".55"/>
+      <stop offset=".48" stop-color="#8FB4FF" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#08090D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
