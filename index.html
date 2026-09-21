@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orb Effects - AI Agent Status Orbs</title>
+    <meta
+      name="description"
+      content="Tiny animated status orbs for AI agents. Replace vague spinners with live thinking, searching, tool, waiting, blocked, and done states."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="title">
+        <div class="orb-stage">
+          <canvas id="aura" width="420" height="420" aria-label="Animated AI agent orb"></canvas>
+          <div class="status-pill" id="statusPill">thinking</div>
+        </div>
+
+        <div class="intro">
+          <p class="eyebrow">Agent monitor</p>
+          <h1 id="title">Orb Effects</h1>
+          <p class="lede">
+            Your agent, at a glance.
+          </p>
+
+          <div class="actions" role="group" aria-label="Agent states">
+            <button class="state-button is-active" data-state="thinking">Thinking</button>
+            <button class="state-button" data-state="reading">Reading</button>
+            <button class="state-button" data-state="searching">Searching</button>
+            <button class="state-button" data-state="tool_calling">Tool</button>
+            <button class="state-button" data-state="streaming">Streaming</button>
+            <button class="state-button" data-state="waiting">Waiting</button>
+            <button class="state-button" data-state="blocked">Blocked</button>
+            <button class="state-button" data-state="done">Done</button>
+          </div>
+
+          <div class="agent-card" aria-live="polite">
+            <span class="signal-label">Current phase</span>
+            <strong id="phaseTitle">Thinking</strong>
+            <p id="phaseDetail">Choosing the next step.</p>
+          </div>
+
+          <div class="signal-panel" aria-label="Live signal preview">
+            <div>
+              <span class="signal-label">Input</span>
+              <strong id="inputValue">42%</strong>
+            </div>
+            <div>
+              <span class="signal-label">Output</span>
+              <strong id="outputValue">18%</strong>
+            </div>
+            <div>
+              <span class="signal-label">Priority</span>
+              <strong id="priorityValue">68</strong>
+            </div>
+          </div>
+
+          <button class="copy-button" id="copySnippet" type="button">Copy Orb snippet</button>
+        </div>
+      </section>
+
+      <section class="monitor" aria-label="Event connection">
+        <form id="connectForm">
+          <label for="endpoint">Event stream URL</label>
+          <input id="endpoint" type="url" placeholder="http://localhost:3000/events" required />
+          <button id="connect" class="state-button">Connect</button>
+        </form>
+        <p id="connectionStatus" role="status">Preview mode. No agent connected.</p>
+        <div class="monitor-stats"><span>Events <strong id="eventCount">0</strong></span><span>Blocked events <strong id="failureCount">0</strong></span><span>Last received <strong id="eventAge">No events</strong></span></div>
+        <label for="importLog">Import event log</label>
+        <input id="importLog" type="file" accept=".json,application/json" />
+        <button id="exportLog" class="state-button" disabled>Export JSON</button>
+      </section>
+      <section class="panel" aria-label="Customize Orb">
+        <div class="control-row">
+          <label for="size">Size</label>
+          <input id="size" type="range" min="180" max="520" value="420" />
+          <span id="sizeValue">420</span>
+        </div>
+        <div class="control-row">
+          <label for="inputSignal">Input Signal</label>
+          <input id="inputSignal" type="range" min="0" max="100" value="42" />
+          <span id="inputSignalValue">42%</span>
+        </div>
+        <div class="control-row">
+          <label for="outputSignal">Output Signal</label>
+          <input id="outputSignal" type="range" min="0" max="100" value="18" />
+          <span id="outputSignalValue">18%</span>
+        </div>
+        <div class="control-row">
+          <label for="priority">Priority</label>
+          <input id="priority" type="range" min="0" max="100" value="68" />
+          <span id="prioritySliderValue">68</span>
+        </div>
+      </section>
+
+      <section class="timeline" aria-labelledby="timeline-title">
+        <div>
+          <p class="eyebrow">Activity</p>
+          <h2 id="timeline-title">Event history</h2>
+        </div>
+        <ol id="eventTrail">
+          <li class="is-active"><span>Thinking</span><strong>Choosing the next step.</strong></li>
+          <li><span>Reading</span><strong>Scanning attached docs.</strong></li>
+          <li><span>Tool</span><strong>Calling calendar API.</strong></li>
+          <li><span>Waiting</span><strong>Needs user approval.</strong></li>
+        </ol>
+      </section>
+
+      <section class="embed" aria-labelledby="embed-title">
+        <div>
+          <p class="eyebrow">Drop-in usage</p>
+          <h2 id="embed-title">Useful by default</h2>
+        </div>
+        <pre><code id="snippet">&lt;canvas id="orb"&gt;&lt;/canvas&gt;
+&lt;script type="module"&gt;
+  import { Orb } from "./orb.js";
+
+  const orb = new Orb("#orb", {
+    state: "tool_calling",
+    input: 0.42,
+    output: 0.18,
+    priority: 0.68
+  });
+
+  orb.setEvent({
+    state: "waiting",
+    label: "Needs approval",
+    detail: "Draft is ready before anything is sent.",
+    priority: 0.91
+  });
+&lt;/script&gt;</code></pre>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

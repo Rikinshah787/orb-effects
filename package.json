@@ -1,0 +1,23 @@
+{
+  "name": "orb-effects",
+  "version": "0.1.0",
+  "description": "Tiny animated status orbs for AI agents.",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "start": "python -m http.server 5173",
+    "demo:events": "node examples/sse-server.js",
+    "check": "node --check agent-aura.js && node --check main.js && node --check monitor.js && node --check examples/sse-server.js"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "status",
+    "canvas",
+    "animation",
+    "observability",
+    "sse"
+  ],
+  "author": "Rikin Shah",
+  "license": "MIT"
+}
